@@ -1,0 +1,209 @@
+﻿@model List<Assignment1.Models.OrderDetails>
+
+@{
+    ViewBag.Title = "GetTransactionDetails";
+}
+
+
+
+<script>
+    function EditDetails(id) {
+        debugger;
+        $($('#' + id).closest('tr')[0]).find('span').attr('style', 'display:none')
+        $($('#' + id).closest('tr')[0]).find('input').attr('style', 'display:inline')
+        $($('#' + id).closest('tr')[0]).find('input.ProductClass').attr('style', 'display:none')
+        $($('#' + id).closest('tr')[0]).find('input.CustomerClass').attr('style', 'display:none')
+        $($('#' + id).closest('tr')[0]).find('input.OrderItemClass').attr('style', 'display:none')
+        $($('#' + id).closest('tr')[0]).find('input.OrderClass').attr('style', 'display:none')
+        $('#' + id).attr('style', 'display:none')
+        $($('#' + id).closest('tr')[0]).find('select').attr('style', 'display:inline')
+        $($('#' + id).closest('td')[0]).find('button.btnUpdate').attr('style', 'display:inline');
+
+        $($('#' + id).closest('td')[0]).find('button.DeleteClass').attr('style', 'display:none')
+        $($('#' + id).closest('tr')[0]).find('input.OrderAmountClass').attr('style', 'display:none')
+        $($('#' + id).closest('tr')[0]).find('input.NetAmountClass').attr('style', 'display:none')
+        $($('#' + id).closest('tr')[0]).find('span.ClassAmount').attr('style', 'display:inline')
+        $($('#' + id).closest('tr')[0]).find('span.ClassNetAmount').attr('style', 'display:inline')
+    }
+    function CancelEditDetails(id) {
+        debugger;
+        $($('#' + id).closest('tr')[0]).find('span').attr('style', 'display:inline')
+        $($('#' + id).closest('tr')[0]).find('input').attr('style', 'display:none')
+        $($('#' + id).closest('tr')[0]).find('input.ProductClass').attr('style', 'display:none')
+        $($('#' + id).closest('tr')[0]).find('input.CustomerClass').attr('style', 'display:none')
+        $($('#' + id).closest('tr')[0]).find('input.OrderItemClass').attr('style', 'display:none')
+        $($('#' + id).closest('tr')[0]).find('input.OrderClass').attr('style', 'display:none')
+        $($('#' + id).closest('tr')[0]).find('select').attr('style', 'display:none')
+        $($('#' + id).closest('td')[0]).find('button.btnUpdate').attr('style', 'display:none');
+        $($('#' + id).closest('td')[0]).find('button.DeleteClass').attr('style', 'display:inline')
+        $($('#' + id).closest('td')[0]).find('input.EditClass').attr('style', 'display:inline')
+
+    }
+
+    function CalculateAmount() {
+
+    }
+</script>
+
+
+
+<h2>Update Details</h2>
+
+@using (Html.BeginForm("GetTransactionDetails", "OrderDetails", FormMethod.Post, new { id = "submitForm" }))
+{ 
+    
+
+    
+    @Html.ValidationSummary(false);
+     
+    <table>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Number
+            </th>
+            <th>Shipping Address</th>
+            <th>Billing Address</th>
+            <th>Order No</th>
+            <th>Transaction Date</th>
+            <th>Order Amount</th>
+            <th>Discount</th>
+            <th>Tax</th>
+            <th>Quantity</th>
+            <th>Net Amount</th>
+            <th>
+                Product Name
+            </th>
+            <th>Stock Left</th>
+
+        </tr>
+
+        @{ int rowIndex = 0;}
+        @foreach (var item in Model)
+        { 
+            
+           
+            <tr>
+                <td>
+                
+               <span id="lblCustomerName_@rowIndex">@item.CustomerName</span>
+           @Html.TextBoxFor(model => model[rowIndex].CustomerName,item.CustomerName, htmlAttributes: new {  style="display:none;",id="txtCustomerName"+@rowIndex})
+              @Html.ValidationMessageFor(model=>model[rowIndex].CustomerName)     
+                </td>
+             <td>
+                 <span id="lblEmail_@rowIndex">@item.Email</span>
+               
+           @Html.TextBoxFor(model => model[rowIndex].Email,Model[rowIndex].Email, htmlAttributes: new {  style="display:none;",id="txtEmail"+@rowIndex})
+                  @Html.ValidationMessageFor(model=>model[rowIndex].Email)   
+                </td>
+            <td>        
+                <span id="lblNumber_@rowIndex">@item.Number</span>
+            
+           @Html.TextBoxFor(model => model[rowIndex].Number, htmlAttributes: new {  style="display:none;",id="txtNumber"+@rowIndex})
+                </td>
+             <td>
+                 <span id="lblShippingAddress_@rowIndex">@item.ShippingAddress</span>
+         
+           @Html.TextBoxFor(model => model[rowIndex].ShippingAddress, htmlAttributes: new {  style="display:none;",id="txtBillingAddress"+@rowIndex})
+                </td>
+            <td>
+                <span id="lblBillingAddress_@rowIndex">@item.BillingAddress</span>
+            
+           @Html.TextBoxFor(model => model[rowIndex].BillingAddress, htmlAttributes: new {  style="display:none;",id="txtCustomerName"+@rowIndex})
+                </td>
+                 <td>
+              @item.OrderID
+           
+           
+               </td>
+                 <td>
+                     @String.Format("{0:MM/dd/yyyy}",@item.TransactionDate)
+    
+           
+               </td>
+            <td>
+                <span id="lblOrderAmount_@rowIndex" class="ClassAmount">@item.OrderAmount</span>
+           
+           @Html.TextBoxFor(model => model[rowIndex].OrderAmount, htmlAttributes: new { @class="OrderAmountClass", style="display:none;",id="txtOrderAmount"+@rowIndex})
+               </td>
+               
+             <td>
+                  <span id="lblDiscount_@rowIndex">@item.Discount</span>
+              
+           @Html.TextBoxFor(model => model[rowIndex].Discount, htmlAttributes: new {  style="display:none;",id="txtDiscount"+@rowIndex})
+                  </td>
+
+            <td>
+                <span id="lblTax_@rowIndex">@item.Tax</span>
+               
+           @Html.TextBoxFor(model => model[rowIndex].Tax, htmlAttributes: new {  style="display:none;",id="txtTax"+@rowIndex})
+                 </td>
+             <td>
+                 <span id="lblQuantity_@rowIndex">@item.Quantity</span>
+              
+           @Html.TextBoxFor(model => model[rowIndex].Quantity, htmlAttributes: new {  style="display:none;",id="txtQuantity"+@rowIndex})
+                </td>
+             <td>
+                 <span id="lblNetAmount_@rowIndex" class="ClassNetAmount">@item.NetAmount</span>
+               
+           @Html.TextBoxFor(model => model[rowIndex].NetAmount, htmlAttributes: new {  @class="NetAmountClass", style="display:none;",id="txtNetAmount"+@rowIndex})
+                 </td>
+            <td>
+                <span id="lblProductName_@rowIndex">@item.ProductName</span>
+                @Html.TextBoxFor(model => model[rowIndex].ProductName, htmlAttributes: new {  style="display:none;",id="txtNetAmount"+@rowIndex})
+          
+                  </td>
+             <td>
+                 @item.Stockleft
+               
+          @* @Html.TextBoxFor(model => model.orderDetails[rowIndex].Stockleft, htmlAttributes: new {  style="display:none;",id="txtStockleft"+@rowIndex})*@
+
+               
+                 @Html.TextBoxFor(model => model[rowIndex].CustomerID, htmlAttributes: new { @class="CustomerClass", style="display:none;",id="txtCustomerID"+@rowIndex})
+                 @Html.TextBoxFor(model => model[rowIndex].ProductID, htmlAttributes: new { @class="ProductClass", style="display:none;",id="txtProductID"+@rowIndex})
+                 @Html.TextBoxFor(model => model[rowIndex].OrderItemID, htmlAttributes: new {@class="OrderItemClass",  style="display:none;",id="txtOrderItemID"+@rowIndex})
+                 @Html.TextBoxFor(model => model[rowIndex].OrderID, htmlAttributes: new { @class="OrderClass", style="display:none;",id="txtOrderID"+@rowIndex})
+                 
+               </td>   
+             
+            
+            <td>
+                @if(Model.Count>1)
+                 {
+                <input type="button" class="EditClass"  value="Edit" onclick="return EditDetails(this.id)"  id="btnEdit_@rowIndex"/>
+                <button type="submit" class="DeleteClass" value="Delete_@item.OrderID" name="command" onclick = "return confirm('Are you sure you wish to delete this record?');">Delete</button>
+                
+                  if (ViewBag.UpdateSuccessFully == false || ViewBag.Update==true)
+                  {
+                <button type="submit" class="btnUpdate" value="Update_@item.OrderID" name="command" style="display:none;">Update</button>
+                <input type="button" class="CancelClass" value="Cancel" onclick="CancelEditDetails(this.id);" style="display:none;" id="btnCancel_@rowIndex"/>
+                  }
+                }
+           
+                
+            </td>
+                </tr> 
+            
+            
+            rowIndex++;
+        }
+
+      @if(ViewBag.Success!=null)
+        {
+            
+        <span>@ViewBag.Success </span>
+            
+        }
+        
+    </table>
+    
+    @Html.ActionLink("Add More Customer","AddCustomer","OrderDetails")
+  
+    
+    
+}

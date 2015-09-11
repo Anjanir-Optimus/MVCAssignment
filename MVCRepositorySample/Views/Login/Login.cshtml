@@ -1,0 +1,24 @@
+﻿@model Assignment1.Models.Login
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+
+
+@using (Html.BeginForm("Login", "Login", FormMethod.Post, new { id = "submitForm" }))
+{
+@Html.AntiForgeryToken()
+ 
+ <span>Email</span>
+        
+    @Html.EditorFor(x=>x.Email)
+
+    <span>Password</span>
+    @Html.EditorFor(x=>x.Password)
+        
+    
+    <input type="submit" value="Login" />
+    
+}

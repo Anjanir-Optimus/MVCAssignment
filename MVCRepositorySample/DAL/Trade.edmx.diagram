@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="677cefb3cc99413c8566ce4cfd8265cf" Name="Diagram1" >
+        <EntityTypeShape EntityType="Optimus_TradeModel.ClientDetail" Width="1.5" PointX="6.4367834471337417" PointY="19.519331300407337" />
+        <EntityTypeShape EntityType="Optimus_TradeModel.ContractDetail" Width="1.5" PointX="8.3536802066274358" PointY="8.1703842469353152" />
+        <EntityTypeShape EntityType="Optimus_TradeModel.ErrorTracer" Width="1.5" PointX="3.5153391452111951" PointY="16.267822973554871" />
+        <EntityTypeShape EntityType="Optimus_TradeModel.OrderItemDetail" Width="1.5" PointX="11.086946244857716" PointY="24.516855862232322" />
+        <EntityTypeShape EntityType="Optimus_TradeModel.ProductDetail" Width="1.5" PointX="5.6191488083541152" PointY="26.001489800401725" />
+        <EntityTypeShape EntityType="Optimus_TradeModel.sysdiagram" Width="1.5" PointX="4.1622918714593595" PointY="14.802302367427528" />
+        <AssociationConnector Association="Optimus_TradeModel.FK_OrderDetails_ClientDetails" />
+        <AssociationConnector Association="Optimus_TradeModel.FK_OrderItemDetails_ContractDetails" />
+        <AssociationConnector Association="Optimus_TradeModel.FK_OrderItemDetails_ProductDetails" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

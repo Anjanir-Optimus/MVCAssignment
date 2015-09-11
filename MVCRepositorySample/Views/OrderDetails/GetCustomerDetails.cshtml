@@ -1,0 +1,57 @@
+﻿@model List<Assignment1.Models.CustomerDetails>
+
+@{
+    ViewBag.Title = "GetCustomerDetails";
+}
+
+<h2>Customer Details</h2>
+
+
+@using (Html.BeginForm())
+
+{ 
+ 
+    <table>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Number
+            </th>
+            
+            <th>
+                Billing Address
+            </th>
+            <th>
+                Shipping Address
+            </th>
+        </tr>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>
+                    
+                    @Html.ActionLink(@item.CustomerName,"GetTransactionDetails",new {id=item.CustomerID})
+                </td>
+                 <td>
+                    @item.Email
+                </td>
+                <td>
+                    @item.Number
+                </td>
+               
+                <td>
+                    @item.BillingAddress
+                </td>
+                <td>
+                    @item.ShippingAddress
+                </td>
+            </tr>
+        }
+    </table>   
+    
+}

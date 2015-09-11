@@ -1,0 +1,65 @@
+﻿@model Assignment1.Models.OrderDetails
+
+@{
+    ViewBag.Title = "AddCustomer";
+}
+
+<h2>Add Customer</h2>
+
+
+
+
+@using (Html.BeginForm("AddCustomer", "OrderDetails", FormMethod.Post, new { id = "submitForm" }))
+{ 
+    @Html.ValidationSummary(
+    false);
+                
+    <span>Customer Name</span>
+    @Html.TextBoxFor(model => model.CustomerName, htmlAttributes: new { style = "display:block;", id = "txtCustomerName" })
+    @Html.ValidationMessageFor(model => model.CustomerName
+           );   
+           
+    <span>Email</span>
+               
+    @Html.TextBoxFor(model => model.Email, htmlAttributes: new { style = "display:block;", id = "txtEmail" })
+                    @Html.ValidationMessageFor(model=>model.Email
+                    );
+                   
+    <span id="lblNumber_">.Number</span>
+            
+    @Html.TextBoxFor(model => model.Number, htmlAttributes: new { style = "display:block;", id = "txtNumber",@maxlength=10 })
+               
+    <span id="lblShippingAddress_">ShippingAddress</span>
+         
+    @Html.TextBoxFor(model => model.ShippingAddress, htmlAttributes: new { style = "display:block;", id = "txtBillingAddress" })
+           
+    <span id="lblBillingAddress">BillingAddress</span>
+
+    @Html.TextBoxFor(model => model.BillingAddress, htmlAttributes: new { style = "display:block;", id = "txtCustomerName" })
+
+
+
+    <span id="lblOrderAmount_" class="ClassAmount">OrderAmount</span>
+           
+    @Html.TextBoxFor(model => model.OrderAmount, htmlAttributes: new { @class = "OrderAmountClass", style = "display:block;", id = "txtOrderAmount" })
+               
+    <span id="lblDiscount_">Discount</span>
+              
+    @Html.TextBoxFor(model => model.Discount, htmlAttributes: new { style = "display:block;", id = "txtDiscount" })
+
+        <span id="lblTax_">Tax</span>
+
+        @Html.TextBoxFor(model => model.Tax, htmlAttributes: new { style = "display:block;", id = "txtTax" })
+  
+        <span id="lblQuantity">Quantity</span>
+
+        @Html.TextBoxFor(model => model.Quantity, htmlAttributes: new { style = "display:block;", id = "txtQuantity" })
+   
+        <span id="lblNetAmount" class="ClassNetAmount">NetAmount</span>
+
+        @Html.TextBoxFor(model => model.NetAmount, htmlAttributes: new { @class = "NetAmountClass", style = "display:block;", id = "txtNetAmount" })
+    
+    <span>Product Name</span>
+                 @Html.TextBoxFor(model => model.ProductName, htmlAttributes: new { @class = "NetAmountClass", style = "display:block;", id = "txtNetAmount" }) 
+    <input type="submit" value="Save" />
+}

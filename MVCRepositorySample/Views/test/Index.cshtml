@@ -1,0 +1,15 @@
+﻿@model Assignment1.Models.Product
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm())
+{ 
+    
+@Html.TextBoxFor(model => model.Name, htmlAttributes: new { @value=23423});
+
+<input type="submit" value="save" />
+}
